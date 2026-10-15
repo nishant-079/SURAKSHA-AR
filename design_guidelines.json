@@ -1,0 +1,169 @@
+{
+  "app_name": "SURAKSHA AR",
+  "personality": "1 iOS-Native Clean (Adapted for Industrial/Utility)",
+  "personality_one_liner": "A high-contrast, credible, and worker-friendly industrial training tool prioritizing clarity and actionable safety.",
+  "color": {
+    "surface": "#F1F5F9",
+    "onSurface": "#0F172A",
+    "surfaceSecondary": "#FFFFFF",
+    "onSurfaceSecondary": "#0F172A",
+    "surfaceTertiary": "#E2E8F0",
+    "onSurfaceTertiary": "#0F172A",
+    "surfaceInverse": "#0F172A",
+    "onSurfaceInverse": "#FFFFFF",
+    "brand": "#0F172A",
+    "onBrand": "#FFFFFF",
+    "brandPrimary": "#F97316",
+    "onBrandPrimary": "#FFFFFF",
+    "brandSecondary": "#0F172A",
+    "onBrandSecondary": "#FFFFFF",
+    "brandTertiary": "#FFEDD5",
+    "onBrandTertiary": "#C2410C",
+    "success": "#16A34A",
+    "onSuccess": "#FFFFFF",
+    "warning": "#F59E0B",
+    "onWarning": "#FFFFFF",
+    "error": "#DC2626",
+    "onError": "#FFFFFF",
+    "info": "#2563EB",
+    "onInfo": "#FFFFFF",
+    "border": "#CBD5E1",
+    "borderStrong": "#94A3B8",
+    "divider": "#E2E8F0",
+    "muted": "#64748B"
+  },
+  "typography": {
+    "displayFontFamily": "Plus Jakarta Sans",
+    "textFontFamily": "Plus Jakarta Sans",
+    "scale": {
+      "sm": 12,
+      "base": 14,
+      "lg": 16,
+      "xl": 20,
+      "2xl": 24
+    }
+  },
+  "spacing": {
+    "rule": "Generous padding and tap targets suitable for industrial workers. Minimum 48pt tap height for primary CTAs.",
+    "xs": 4,
+    "sm": 8,
+    "md": 12,
+    "lg": 16,
+    "xl": 24,
+    "2xl": 32,
+    "3xl": 48
+  },
+  "radius_tokens": {
+    "sm": 6,
+    "md": 12,
+    "lg": 20,
+    "pill": 999
+  },
+  "shadow_tier": "1",
+  "navigation": "stack_only",
+  "icon_set": "MaterialCommunityIcons",
+  "glassmorphism": {
+    "enabled": "false",
+    "do's": [],
+    "dont's": [
+      "No glassmorphism. This is an industrial/utilitarian app for mid-range Android 10+ devices. Rely on solid colors and high-contrast cards to minimize cognitive load."
+    ]
+  },
+  "platform_libraries": {
+    "glass": {
+      "ios": "expo-glass-effect",
+      "android": "expo-blur",
+      "low_end_android_fallback": "solid surfaceSecondary"
+    },
+    "image": "expo-image",
+    "blur": "expo-blur",
+    "bottom_sheet": "@gorhom/bottom-sheet",
+    "animation": "react-native-reanimated",
+    "gesture": "react-native-gesture-handler",
+    "camera": "expo-camera"
+  },
+  "screens": [
+    {
+      "name": "Splash & Language Selection",
+      "purpose": "Establish brand credibility and let the worker select their primary language.",
+      "states": {
+        "loading": "Spinner over deep navy background.",
+        "empty": "N/A",
+        "error": "N/A"
+      },
+      "layout": "Deep navy blue (`surfaceInverse`) background. Large safety-helmet logo centered. Bottom 1/3 contains three large, high-contrast language selection cards (English, Hindi, Santali) and an orange sticky primary CTA to 'Continue'."
+    },
+    {
+      "name": "Worker Profile Registration",
+      "purpose": "Collect worker details for certification tracking.",
+      "states": {
+        "loading": "Skeleton inputs.",
+        "empty": "N/A",
+        "error": "Inline validation in red."
+      },
+      "layout": "Navy blue header. Scrollable single-column form with large, touch-friendly text inputs (`surfaceSecondary`). Sticky orange submit CTA at the bottom inside KeyboardAvoidingView."
+    },
+    {
+      "name": "Home Dashboard",
+      "purpose": "Showcase training progress, daily streak, and act as a hub for starting modules.",
+      "states": {
+        "loading": "Skeleton cards.",
+        "empty": "Illustration of safety worker with 'Start your first training module' CTA.",
+        "error": "Error message with 'Retry Connection' button."
+      },
+      "layout": "Deep navy header band showing Worker Name & Helmet Logo. Body uses light `surface` background. Top white cards (`surfaceSecondary`) show Training Progress (progress bar), Latest Score, and Certificate Status. Below, a vertically stacked list of 'Safety Training Modules' cards (Fire, Gas, etc.) with bilingual labels."
+    },
+    {
+      "name": "AR Camera Training Scenario",
+      "purpose": "Interactive spatial training utilizing the camera feed with 2D overlays.",
+      "states": {
+        "loading": "Camera initializing spinner.",
+        "empty": "N/A",
+        "error": "Camera permission required screen."
+      },
+      "layout": "Full-screen camera feed. Minimal UI clutter. Top safe area holds a translucent dark bar displaying task progress (Task 1/4). Center screen uses crosshairs or tap-target bounding boxes for AR interaction. Bottom safe area contains a large orange 'Hint/Continue' floating action button."
+    },
+    {
+      "name": "Assessment Engine",
+      "purpose": "Test the worker's knowledge post-training via MCQs.",
+      "states": {
+        "loading": "N/A",
+        "empty": "N/A",
+        "error": "N/A"
+      },
+      "layout": "Deep navy (`surfaceInverse`) background for the Question Card to maximize focus. Orange 'Q1' badge attached to the top-left of the card. Below the question text, vertically stacked white A/B/C/D option cards (`surfaceSecondary`) acting as massive touch targets."
+    },
+    {
+      "name": "Score Result & Certificate",
+      "purpose": "Display assessment results and generate a QR-verifiable certificate.",
+      "states": {
+        "loading": "Calculating score spinner.",
+        "empty": "N/A",
+        "error": "Failed to fetch certificate."
+      },
+      "layout": "Top section features a large Green (`success`) or Red (`error`) result card. Passed state shows a large circular progress chart. Bottom section displays an Orange 'Get Certificate' button. Tapping reveals the Certificate view with a large QR code and web admin verification link."
+    }
+  ],
+  "images": {
+    "safety_helmet_logo": {
+      "url": "https://images.unsplash.com/photo-1768158988512-ad31657fe5b8?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1OTV8MHwxfHNlYXJjaHwxfHxpbmR1c3RyaWFsJTIwc2FmZXR5JTIweWVsbG93JTIwaGVsbWV0fGVufDB8fHx8MTc5MDU5NjcyMnww&ixlib=rb-4.1.0&q=85",
+      "alt": "Industrial safety yellow helmet"
+    },
+    "coal_mine_hero": {
+      "url": "https://images.unsplash.com/photo-1659188269611-a360680474f0?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzMzV8MHwxfHNlYXJjaHwyfHxjb2FsJTIwbWluZSUyMHdvcmtlciUyMHNhZmV0eXxlbnwwfHx8fDE3OTA1OTY3MjJ8MA&ixlib=rb-4.1.0&q=85",
+      "alt": "Coal mine worker machinery"
+    },
+    "factory_fire_hero": {
+      "url": "https://images.unsplash.com/photo-1563062067-7700e1d9ae1d?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxODF8MHwxfHNlYXJjaHwxfHxmYWN0b3J5JTIwZmlyZSUyMHNhZmV0eXxlbnwwfHx8fDE3OTA1OTY3MjJ8MA&ixlib=rb-4.1.0&q=85",
+      "alt": "Factory fire safety"
+    }
+  },
+  "instructions_to_main_agent": [
+    "NOTE ON COLORS: Navy Blue and Orange are strictly utilized here because the user's brief explicitly required 'deep navy blue header band', 'orange/saffron primary CTA', and 'dark navy question cards'. This aligns with the exception rule allowing these colors when directly mentioned.",
+    "Bilingual Support: Ensure component heights are flexible to accommodate Hindi/Santali text strings, which often run longer or taller than English.",
+    "Touch Targets: Enforce a minimum 48pt height for all interactable elements (buttons, MCQ option cards, tab items) to support gloved/worker environments.",
+    "AR Implementation: Keep the AR 2D overlay extremely clean. Avoid modal popups over the camera view. Rely on an edge-to-edge camera feed with a simple bottom sticky action button for hints/continuing.",
+    "Shadows: Keep shadows subtle (Tier 1) on the white cards. The contrast between the light grey background (`surface`) and the white card (`surfaceSecondary`) should do most of the visual separation.",
+    "Web Admin Dashboard: Implement this as an integrated web route (/admin) as requested, keeping styling consistent but adapted for broader desktop/tablet viewing."
+  ]
+}
