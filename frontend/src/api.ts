@@ -96,6 +96,28 @@ export async function adminGet<T>(path: string): Promise<T> {
   return (await res.json()) as T;
 }
 
+export async function adminPost<T>(path: string): Promise<T> {
+  const token = await getAdminToken();
+
+  const res = await fetch(`${API}${path}`, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${token || ""}`,
+      "Content-Type": "application/json",
+    },
+  });
+
+  if (res.status === 401) {
+    throw new Error("unauthorized");
+  }
+
+  if (!res.ok) {
+    throw new Error(`HTTP ${res.status}`);
+  }
+
+  return (await res.json()) as T;
+}
+
 export async function adminMe(): Promise<boolean> {
   try {
     await adminGet("/admin/me");

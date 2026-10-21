@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "frontend",
+    "name": "SURAKSHA-AR",
     "slug": "frontend",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -20,7 +20,10 @@
         "backgroundColor": "#0F172A"
       },
       "package": "com.emergent.arsafetytrain.rhdd5q",
-      "permissions": ["android.permission.CAMERA"]
+      "permissions": [
+        "android.permission.CAMERA",
+        "android.permission.RECORD_AUDIO"
+      ]
     },
     "web": {
       "bundler": "metro",
@@ -53,6 +56,12 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "a7694b24-1e54-4a13-842b-13b91ba0c646"
+      }
     }
   }
 }

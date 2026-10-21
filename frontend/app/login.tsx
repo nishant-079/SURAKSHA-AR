@@ -72,11 +72,10 @@ export default function LoginScreen() {
 
         <View style={styles.buttonContainer}>
           <Button
+            label={loading ? "Logging in..." : "Login"}
             onPress={handleLogin}
             disabled={loading}
-          >
-            {loading ? "Logging in..." : "Login"}
-          </Button>
+          />
         </View>
 
         <Pressable
